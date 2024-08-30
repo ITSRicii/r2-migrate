@@ -25,7 +25,6 @@ add_executable(
   robot_node 
   src/robot_node.cpp 
   src/udp.cpp
-  
 )
 
 ament_target_dependencies(
@@ -42,9 +41,48 @@ ament_target_dependencies(
   sensor_msgs
 )
 
+add_executable(
+  joy_node 
+  src/joy_node.cpp 
+)
+
+ament_target_dependencies(
+  joy_node 
+  rclcpp 
+  std_msgs 
+  geometry_msgs 
+  nav_msgs 
+  std_srvs 
+  robot_itsrobocon_msgs
+  sensor_msgs
+)
+
+add_executable(
+  dive_joy_node 
+  src/dive_joy_node.cpp 
+)
+
+ament_target_dependencies(
+  dive_joy_node 
+  rclcpp 
+  std_msgs 
+  geometry_msgs 
+  nav_msgs 
+  std_srvs 
+  robot_itsrobocon_msgs
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+  sensor_msgs
+)
+
 install(TARGETS
   robot_node
+  joy_node
+  dive_joy_node
   DESTINATION lib/${PROJECT_NAME})
+
+include_directories(include)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

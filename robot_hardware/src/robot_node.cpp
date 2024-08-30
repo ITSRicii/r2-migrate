@@ -1,4 +1,4 @@
-#include "../include/robot_hardware/robot_node.hpp"
+#include "robot_hardware/robot_node.hpp"
 
 #include <bitset>
 #include <vector>
